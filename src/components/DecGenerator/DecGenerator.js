@@ -9,7 +9,7 @@ function DecGenerator() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:3001", {
+    const response = await fetch("/.netlify/functions/openai-api", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ function DecGenerator() {
     const textToCopy = document.getElementById("decResponse");
     const textarea = document.createElement("textarea");
     textarea.textContent = textToCopy.textContent;
-    textarea.style.position = "fixed"; // Prevent scrolling to bottom of the page on focus in iOS
+    textarea.style.position = "fixed";
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
