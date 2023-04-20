@@ -17,7 +17,7 @@ console.log("API Key:", process.env.OPENAI_API_KEY);
 
 const openai = new OpenAIApi(config);
 
-const whitelist = ["http://localhost:3000", "https://writemydec.netlify.app"];
+const whitelist = ["http://localhost:3001", "https://writemydec.netlify.app"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
