@@ -17,7 +17,18 @@ console.log("API Key:", process.env.OPENAI_API_KEY);
 
 const openai = new OpenAIApi(config);
 
-app.use(cors());
+const whitelist = ["http://localhost:3000", "https://writemydec.netlify.app"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.post("/", async (req, res) => {
